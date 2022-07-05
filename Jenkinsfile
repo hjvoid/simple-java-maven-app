@@ -2,14 +2,14 @@ pipeline {
     agent {
         docker {
             image 'maven:3.8.1-adoptopenjdk-11'
-            args 'p-v /root/.m2'
+            args '-v /root/.m2:/root/.m2'
         }
     }
     stages {
-        stage('Build'){
-        steps {
-            sh 'mvn -B -DskipTests clean package'
-        }
+        stage('Build') {
+            steps {
+                sh 'mvn -B -DskipTests clean package'
+            }
         }
     }
 }
